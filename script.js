@@ -275,9 +275,6 @@ function generateFinalImage() {
                 ctx.beginPath();
                 ctx.roundRect(boxX, boxY, boxWidth, boxHeight, boxRadius);
                 ctx.clip();
-                
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-                ctx.fillRect(boxX, boxY, boxWidth, boxHeight);
 
                 const scaleValue = imageScale;
                 
