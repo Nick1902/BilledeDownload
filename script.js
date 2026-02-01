@@ -276,20 +276,22 @@ function generateFinalImage() {
                 ctx.roundRect(boxX, boxY, boxWidth, boxHeight, boxRadius);
                 ctx.clip();
 
-                const scaleValue = imageScale;
-                
                 const imgWidth = userImg.width;
                 const imgHeight = userImg.height;
                 const aspectRatio = imgWidth / imgHeight;
+                const boxAspectRatio = boxWidth / boxHeight;
                 
-                let drawWidth, drawHeight;
-                if (aspectRatio > 1) {
-                    drawHeight = boxHeight * scaleValue;
-                    drawWidth = drawHeight * aspectRatio;
+                let baseWidth, baseHeight;
+                if (aspectRatio > boxAspectRatio) {
+                    baseHeight = boxHeight;
+                    baseWidth = baseHeight * aspectRatio;
                 } else {
-                    drawWidth = boxWidth * scaleValue;
-                    drawHeight = drawWidth / aspectRatio;
+                    baseWidth = boxWidth;
+                    baseHeight = baseWidth / aspectRatio;
                 }
+                
+                const drawWidth = baseWidth * imageScale;
+                const drawHeight = baseHeight * imageScale;
                 
                 const centerX = boxX + boxWidth / 2;
                 const centerY = boxY + boxHeight / 2;
